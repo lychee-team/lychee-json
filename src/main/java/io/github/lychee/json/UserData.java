@@ -1,11 +1,15 @@
 package io.github.lychee.json;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.github.lychee.json.value.Title;
 import org.immutables.value.Value;
 import org.immutables.value.Value.Style.ImplementationVisibility;
 
 @Value.Immutable
 @Value.Style(visibility = ImplementationVisibility.PACKAGE, overshadowImplementation = true)
+@JsonSerialize(as = ImmutableUserData.class)
+@JsonDeserialize(as = ImmutableUserData.class)
 public interface UserData {
 	String id();
 
@@ -37,8 +41,14 @@ public interface UserData {
 
 	String playing();
 
+	/**
+	 * Number of following users.
+	 */
 	int nbFollowing();
 
+	/**
+	 * Number of followers.
+	 */
 	int nbFollowers();
 
 	int completionRate();
