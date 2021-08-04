@@ -16,6 +16,8 @@
 
 package io.github.lychee.json;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.github.lychee.json.value.Title;
@@ -35,27 +37,36 @@ public interface UserData {
 
 	PerfsData perfs();
 
-	int createdAt();
+	long createdAt();
 
-	boolean disabled();
+	@Value.Default
+	default boolean disabled() {
+		return false;
+	}
 
-	boolean tosViolation();
+	@Value.Default
+	default boolean tosViolation() {
+		return false;
+	}
 
 	ProfileData profile();
 
-	int seenAt();
+	long seenAt();
 
-	boolean isPatron();
+	@Value.Default
+	default boolean isPatron() {
+		return false;
+	}
 
 	PlaytimeData playTime();
 
 	String language();
 
-	Title title();
+	Optional<Title> title();
 
 	String url();
 
-	String playing();
+	Optional<String> playing();
 
 	/**
 	 * Number of following users.
@@ -69,9 +80,11 @@ public interface UserData {
 
 	int completionRate();
 
-	CountData data();
+	CountData count();
 
-	boolean streaming();
+	default boolean streaming() {
+		return false;
+	}
 
 	boolean followable();
 

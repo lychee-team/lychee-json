@@ -16,6 +16,8 @@
 
 package io.github.lychee.json;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
@@ -26,25 +28,29 @@ import org.immutables.value.Value.Style.ImplementationVisibility;
 @JsonSerialize(as = ImmutablePerfsData.class)
 @JsonDeserialize(as = ImmutablePerfsData.class)
 public interface PerfsData {
-	PerfData chess960();
+	Optional<PerfData> chess960();
 
-	PerfData atomic();
+	Optional<PerfData> atomic();
 
-	PerfData racingKings();
+	Optional<PerfData> racingKings();
 
-	PerfData ultraBullet();
+	Optional<PerfData> ultraBullet();
 
-	PerfData blitz();
+	Optional<PerfData> blitz();
 
-	PerfData kingOfTheHill();
+	Optional<PerfData> kingOfTheHill();
 
-	PerfData correspondence();
+	Optional<PerfData> correspondence();
 
-	PerfData horde();
+	Optional<PerfData> horde();
 
-	PerfData puzzle();
+	Optional<PerfData> puzzle();
 
-	PerfData classical();
+	Optional<PerfData> classical();
 
-	StormPerfData storm();
+	Optional<PerfData> bullet();
+
+	Optional<PerfData> rapid();
+
+	Optional<StormPerfData> storm();
 }

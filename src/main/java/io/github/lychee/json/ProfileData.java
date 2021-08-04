@@ -16,6 +16,9 @@
 
 package io.github.lychee.json;
 
+import java.util.Optional;
+import java.util.OptionalInt;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
@@ -26,21 +29,21 @@ import org.immutables.value.Value.Style.ImplementationVisibility;
 @JsonSerialize(as = ImmutableProfileData.class)
 @JsonDeserialize(as = ImmutableProfileData.class)
 public interface ProfileData {
-	String country();
+	Optional<String> country();
 
-	String location();
+	Optional<String> location();
 
-	String bio();
+	Optional<String> bio();
 
-	String firstName();
+	Optional<String> firstName();
 
-	String lastName();
+	Optional<String> lastName();
 
-	int fideRating();
+	OptionalInt fideRating();
 
-	int uscfRating();
+	OptionalInt uscfRating();
 
-	int ecfRating();
+	OptionalInt ecfRating();
 
-	String links();
+	Optional<String> links();
 }

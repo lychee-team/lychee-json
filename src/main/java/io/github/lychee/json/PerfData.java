@@ -34,5 +34,5 @@ public interface PerfData {
 
 	int prog();
 
-	int prov();
+	boolean prov();
 }
